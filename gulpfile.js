@@ -10,13 +10,15 @@ const isWatch = process.argv.includes("--watch");
 
 gulp.task("copy", done => {
   gulp.src("./src/index.html").pipe(gulp.dest("./build"));
+  gulp.src("./src/styles/**/*").pipe(gulp.dest("./build/styles"));
   done();
 });
 
 gulp.task("server", done => {
   connect.server({
     root: ["./build"],
-    port: 8080
+    port: 8080,
+    livereload: true
   });
   done();
 });
@@ -25,6 +27,9 @@ gulp.task("build", done => {
   browserify({
     entries: ["./src/app.js"]
   })
+    .transform("browserify-css", {
+      global: true
+    })
     .transform(babelify, {
       global: true,
       plugins: ["@babel/plugin-transform-modules-commonjs"],
@@ -46,5 +51,3 @@ if (isBuild) serie = gulp.series("copy", "build");
 if (isWatch) serie = gulp.series("copy", "build", "server", "watch");
 
 gulp.task("default", serie);
-
-//Tarea... Hacer que la tarea watch refresque el navegador cuando termine
