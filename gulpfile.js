@@ -1,35 +1,35 @@
 const gulp = require("gulp");
+const browserfy = require("browserify");
 const babelify = require("babelify");
-const browserify = require("browserify");
 const source = require("vinyl-source-stream");
 const connect = require("gulp-connect");
 
+console.log(process.argv);
 const isBuild = process.argv.includes("--build");
 const isStart = process.argv.includes("--start");
 const isWatch = process.argv.includes("--watch");
 
 gulp.task("copy", done => {
   gulp.src("./src/index.html").pipe(gulp.dest("./build"));
-  gulp.src("./src/styles/**/*").pipe(gulp.dest("./build/styles"));
+  gulp.src("./src/styles/index.css").pipe(gulp.dest("./build"));
+  gulp.src("./src/images/**/*").pipe(gulp.dest("./build/images"));
+
   done();
 });
 
 gulp.task("server", done => {
   connect.server({
     root: ["./build"],
-    port: 8080,
-    livereload: true
+    port: 8080
   });
   done();
 });
 
 gulp.task("build", done => {
-  browserify({
+  browserfy({
     entries: ["./src/app.js"]
   })
-    .transform("browserify-css", {
-      global: true
-    })
+    .transform("browserify-css", { global: true })
     .transform(babelify, {
       global: true,
       plugins: ["@babel/plugin-transform-modules-commonjs"],

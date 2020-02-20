@@ -1,16 +1,15 @@
 {
   "name": "nodejs",
   "version": "1.0.0",
-  "description": "Proyecto node",
+  "description": "Curso de NodeJS",
   "main": "index.js",
   "scripts": {
-    "build": "gulp --build",
     "start": "gulp --start",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp --build",
     "watch": "gulp --watch"
   },
-  "author": "Juan",
-  "license": "MIT",
+  "author": "OpenSystems",
+  "license": "ISC",
   "dependencies": {
     "@babel/core": "^7.8.4",
     "@babel/plugin-transform-modules-commonjs": "^7.8.3",
@@ -25,7 +24,10 @@
     "gulp-connect": "^5.7.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-redux": "^7.1.3",
     "reactstrap": "^8.4.1",
+    "redux": "^4.0.5",
+    "redux-starter-kit": "^2.0.0",
     "serve-static": "^1.14.1",
     "vinyl-source-stream": "^2.0.0"
   }

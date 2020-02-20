@@ -1,24 +1,22 @@
 import React from "react";
-import Bar from "./bar";
+import NavBar from "./navBar";
 
-const Main = props => {
-  return (
-    <React.Fragment>
-      <Bar />
-      <div className="container w-100 h-100">
-        <div className="d-flex flex-column align-items-center justify-content-center h-100 w-100">
-          <h1>Descargar videos</h1>
-          <div className="form-group">
-            <label>Link del video</label>
-            <input
-              placeholder="Nombre del video"
-              className="form-control"
-            ></input>
-          </div>
+const Main = () => (
+  <React.Fragment>
+    <NavBar />
+    <div className="container w-100 h-100 pt-5">
+      <div className="w-100 h-100 d-flex flex-column align-items-center justify-content-start">
+        <h1>Video Download</h1>
+        <div className="form-group row">
+          <label>Link del video</label>
+          <input
+            placeholder="Ingrese el link aquí"
+            className="form-control"
+          ></input>
         </div>
       </div>
-    </React.Fragment>
-  );
-};
+    </div>
+  </React.Fragment>
+);
 
 export default Main;
