@@ -1,5 +1,6 @@
-// import { Action } from 'redux'
-import { createAction } from "redux-starter-kit";
+// import { Action } from "redux";
+import { createAction } from "@reduxjs/toolkit";
 
-export const LoadVideos = createAction("Load videos");
-export const WriteText = createAction("Write text for search videos");
+export const WriteText = createAction("Escribimos un texto para la busqueda");
+export const LoadVideos = createAction("Cargar los videos dado una busqueda");
+export const RequestLogin = createAction("Se realiza la solicitud de login");

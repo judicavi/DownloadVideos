@@ -1,14 +1,19 @@
-import { createReducer } from "redux-starter-kit";
-import * as Actions from "../actions";
+import { combineReducers } from "redux";
+import { connectRouter } from "connected-react-router";
+import session, { defaultValues as defaultSession } from "./session.reducer";
+import video, { defaultValues as defaultVideo } from "./video.reducer";
 
-const defaultValues = {
-  loadVideos: false,
-  searchText: ""
+export const defaultState = {
+  video: defaultVideo,
+  session: defaultSession
 };
-export const video = createReducer(defaultValues, {
-  [Actions.WriteText]: updateText
-});
 
-const updateText = (state, { payload }) => {
-  state.searchText = payload;
+createRootReducer = history => {
+  return combineReducers({
+    video,
+    session,
+    router: connectRouter(history)
+  });
 };
+
+export default createRootReducer;

@@ -1,8 +1,5 @@
-#root {
+.root {
   width: 100vw;
   height: 100vh;
-}
-
-.my-class {
-  background-color: red;
+  background-color: aliceblue;
 }
